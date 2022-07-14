@@ -1,0 +1,13 @@
+.app-header {
+    height: 50px;
+
+    nav {
+        // justify-content: center;
+        align-items: center;
+        width: fit-content;
+        gap: 7.5px;
+        .logo {
+            width: 30px;
+        }
+    }
+}
