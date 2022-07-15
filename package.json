@@ -14,9 +14,11 @@
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/vue-fontawesome": "^3.0.1",
+    "apexcharts": "^3.35.3",
     "sass": "^1.53.0",
     "vue": "^3.2.25",
-    "vue-router": "^4.1.2"
+    "vue-router": "^4.1.2",
+    "vue3-apexcharts": "^1.4.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",

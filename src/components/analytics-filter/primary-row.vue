@@ -6,9 +6,9 @@ const props = defineProps(["filterSelects"]);
 
 <template>
   <div class="primary-row-container full main-layout">
-    <div class="primary-row space-between flex">
+    <div class="primary-row space-between flex wrap">
       <div class="selects-btns-container flex wrap">
-        <div class="selects flex align-center">
+        <div class="selects flex align-center justify-center wrap">
           <select v-for="select in filterSelects" :key="select._id">
             <option
               v-for="option in select.options"

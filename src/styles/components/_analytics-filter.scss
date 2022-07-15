@@ -1,23 +1,42 @@
 .analytics-filter {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 
     .primary-row-container {
         background-color: #c0bcbc38;
-        padding: 5px 0;
+        padding: 10px 0;
         margin-bottom: 10px;
 
         .primary-row {
             // padding: 10px 20px;
             // justify-content: space-between;
+            @include for-wide-mobile-layout {
+                justify-content: center;
+            }
+            @include for-small-mobile-layout {
+                // justify-content: flex-start;
+            }
 
             .selects-btns-container {
-                gap: 15px;
+                gap: 50px;
+                @include for-small-mobile-layout {
+                    margin-bottom: 15px;
+                    justify-content: center;
+                }
 
-                .selects > * {
-                    margin-right: 15px;
+                .selects {
+                    gap: 15px;
+                    // margin-right: 15px;
                 }
 
                 .option-btns {
+                    gap: 10px;
+
+                    button {
+                        background-color: #c6c6c6;
+                        font-size: .7rem;
+                        padding: 7.5px 15px;
+                        border-radius: 3px;
+                    }
                 }
             }
 
@@ -28,11 +47,19 @@
     }
 
     .secondary-row {
+        @include for-small-mobile-layout {
+            justify-content: center;
+        }
+
         .view-btns > * {
             margin-right: 10px;
+            padding: 7.5px 12.5px;
+            border-radius: 20px;
+            font-size: .7rem;
 
             &.active {
                 background-color: black;
+                color: #ffffff;
             }
         }
 

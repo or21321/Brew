@@ -5,11 +5,16 @@ const props = defineProps(["companies"]);
 </script>
 
 <template>
-  <ul class="companies-list grow">
+  <ul class="company-list grow">
+    <div class="column-titles">
+      <span>Rank</span>
+      <span>Name</span>
+    </div>
     <company-preview
-      v-for="company in props.companies"
+      v-for="(company, idx) in props.companies"
       :key="company._id"
       :company="company"
+      :rank="idx + 1"
     >
     </company-preview>
   </ul>

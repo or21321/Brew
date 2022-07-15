@@ -1,13 +1,29 @@
 .app-header {
     height: 50px;
+    padding-top: 15px;
+    align-items: center;
+    width: fit-content;
 
     nav {
-        // justify-content: center;
-        align-items: center;
-        width: fit-content;
-        gap: 7.5px;
+        > * {
+            height: 30px;
+            background-color: rgba(192, 188, 188, 0.2196078431);
+
+            &:not(.logo) {
+                padding: 20px 0;
+            }
+
+            span {
+                border-left: 1px solid #b1adad;
+                padding: 5px 12.5px 0 12.5px;
+            }
+        }
+
         .logo {
-            width: 40px;
+            background-color: rgba(192, 188, 188, 0.2196078431);
+            width: 80px;
+            padding: 0 9.5px;
+            height: 40px;
         }
     }
 }

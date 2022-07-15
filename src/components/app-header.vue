@@ -11,10 +11,11 @@ console.log("props", props);
     <nav class="flex">
       <logo></logo>
       <router-link
+        class="flex align-center"
         v-for="link in props.headerNavLinks"
         :to="{ name: link.name }"
         :key="link._id"
-        >{{ link.name }}</router-link
+        ><span>{{ link.name }}</span></router-link
       >
     </nav>
   </header>

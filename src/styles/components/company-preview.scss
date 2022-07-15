@@ -1,9 +1,38 @@
 .company-preview {
-    .img-name-container {
-        gap: 10px;
+    font-size: 0.7rem;
+    padding: 5px 12.5px;
+
+    &:nth-child(2) {
+        border-top: 1px solid grey;
+    }
+
+    .company-info-container {
+        gap: 36px;
+
+        span {
+            width: 3px;
+        }
+
+        .img-name-container {
+            gap: 15px;
+
+            img {
+                width: 30px;
+            }
+        }
+    }
+
+    .links-container {
+        gap: 12.5px;
 
         img {
-            width: 35px;
+            width: 14px;
+            padding-bottom: 1px;
+            border-bottom: 1px solid black;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 }

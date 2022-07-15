@@ -1,16 +1,24 @@
 .analytics-page {
     grid-template-rows: min-content min-content 1fr;
+    padding-top: 17px;
 
     .analytics-header {
-        padding-bottom: 5px;
+
 
         ul {
             display: flex;
-            gap: 7.5px;
-            margin-right: 7.5px;
+            gap: 30px;
+            margin-right: 15px;
 
-            li.active {
-                color: green;
+            li {
+                padding: 3px;
+                text-decoration: underline;
+
+                &.active {
+                    color: green;
+                    border-bottom: 1.5px solid green;
+                    margin-bottom: -1.5px;
+                }
             }
         }
     }
@@ -28,6 +36,13 @@
 
         & > * {
             border: 1px solid grey;
+            min-width: 350px;
+            max-width: 50%;
+
+            @include for-wide-mobile-layout {
+                max-width: unset;
+                min-width: unset;
+            }
         }
     }
 }

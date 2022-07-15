@@ -16,7 +16,7 @@ function isActiveView(viewNum: number) {
 </script>
 
 <template>
-  <div class="secondary-row space-between flex">
+  <div class="secondary-row space-between flex wrap">
     <div class="view-btns">
       <button
         v-for="num in 4"

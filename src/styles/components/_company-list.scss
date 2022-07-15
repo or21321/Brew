@@ -1,0 +1,12 @@
+.company-list {
+    padding: 27.5px 20px;
+
+    .column-titles > * {
+        padding-left: 10px;
+        font-size: .7rem;
+
+        &:nth-child(2) {
+            margin-left: 50px;
+        }
+    }
+}

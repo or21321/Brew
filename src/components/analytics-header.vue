@@ -17,7 +17,7 @@ function isActiveType(name: string) {
 </script>
 
 <template>
-  <section class="analytics-header flex">
+  <section class="analytics-header flex align-center">
     <ul>
       <li
         v-for="a in props.analyticsTypes"
@@ -28,6 +28,9 @@ function isActiveType(name: string) {
         {{ a.name }} Analysis
       </li>
     </ul>
-    <button @click="onAddAnalyticType">+</button>
+    <font-awesome-icon
+      @click="onAddAnalyticType"
+      icon="fa-solid fa-circle-plus"
+    />
   </section>
 </template>
