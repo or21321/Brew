@@ -1,0 +1,33 @@
+.analytics-page {
+    grid-template-rows: min-content min-content 1fr;
+
+    .analytics-header {
+        padding-bottom: 5px;
+
+        ul {
+            display: flex;
+            gap: 7.5px;
+            margin-right: 7.5px;
+
+            li.active {
+                color: green;
+            }
+        }
+    }
+
+    // .analytics-filter-container {
+    //     background-color: #c0bcbc38;;
+    //     position: fixed;
+    //     width: 100%;
+    //     height: 30px;
+    //     left: 0;
+    // }
+
+    .analytics-container {
+        gap: 10px;
+
+        & > * {
+            border: 1px solid grey;
+        }
+    }
+}

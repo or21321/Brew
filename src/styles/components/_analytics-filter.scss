@@ -1,0 +1,65 @@
+.analytics-filter {
+    margin-bottom: 10px;
+
+    .primary-row-container {
+        background-color: #c0bcbc38;
+        padding: 5px 0;
+        margin-bottom: 10px;
+
+        .primary-row {
+            // padding: 10px 20px;
+            // justify-content: space-between;
+
+            .selects-btns-container {
+                gap: 15px;
+
+                .selects > * {
+                    margin-right: 15px;
+                }
+
+                .option-btns {
+                }
+            }
+
+            .date-filter-section svg.fa-calendar {
+                margin-left: 25px;
+            }
+        }
+    }
+
+    .secondary-row {
+        .view-btns > * {
+            margin-right: 10px;
+
+            &.active {
+                background-color: black;
+            }
+        }
+
+        .search-section {
+            gap: 8px;
+
+            .input-container {
+                outline: 1px solid grey;
+                height: 26px;
+
+                &:focus-within {
+                    outline: 1.5px solid black;
+                }
+
+                svg.fa-magnifying-glass {
+                    margin-left: 5px;
+                }
+
+                input {
+                    margin-left: 10px;
+                    border: unset;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+}

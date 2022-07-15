@@ -70,18 +70,18 @@ export const router = createRouter({
 
 // const isAuthenticated = authService.getLoggedUserRef()
 // router.beforeEach(async (to, from) => {
-//     if (
-//         // make sure the user is authenticated
-//         !isAuthenticated.value &&
-//         // ❗️ Avoid an infinite redirect
-//         to.name !== 'Login'
-//     ) {
-//         // redirect the user to the login page
-//         notify({
-//             title: "Authorization needed",
-//             text: "You need to log in to see that page!",
-//         });
-//         return { name: 'Login' }
-//     }
+    // if (
+    //     // make sure the user is authenticated
+    //     !isAuthenticated.value &&
+    //     // ❗️ Avoid an infinite redirect
+    //     to.name !== 'Login'
+    // ) {
+    //     // redirect the user to the login page
+    //     notify({
+    //         title: "Authorization needed",
+    //         text: "You need to log in to see that page!",
+    //     });
+    //     return { name: 'Login' }
+    // }
 // })
 

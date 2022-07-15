@@ -22,7 +22,7 @@ body {
     height: 100%;
 }
 
-#app{
+#app {
     height: 100%;
 }
 
@@ -55,8 +55,18 @@ ul {
     list-style: none;
 }
 
+button {
+    background-color: unset;
+    border: unset;
+}
+
 button:hover {
     cursor: pointer;
+}
+
+select {
+    background-color: unset;
+    border: unset;
 }
 
 .btn {

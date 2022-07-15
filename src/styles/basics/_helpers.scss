@@ -5,6 +5,21 @@
 .inline-flex {
     display: inline-flex;
 }
+.wrap {
+    flex-wrap: wrap;
+}
+.space-between {
+    justify-content: space-between;
+}
+.align-center {
+    align-items: center;
+}
+.direction-column {
+    flex-direction: column;
+}
+.grow {
+    flex-grow: 1;
+}
 
 // List
 .clean-list {

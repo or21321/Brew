@@ -11,6 +11,8 @@
 
 // COMPONENTS
 @import "components/app-header";
+@import "components/analytics-filter";
+@import "components/company-preview.scss";
 
 // PAGES
-
+@import "pages/analytics.scss";
