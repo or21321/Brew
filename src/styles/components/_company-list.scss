@@ -1,12 +1,44 @@
-.company-list {
+.company-list-container {
     padding: 27.5px 20px;
+    max-height: 100%;
+
+    @include for-small-mobile-layout {
+        max-height: 300px;
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 2px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #ffffff;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
 
     .column-titles > * {
         padding-left: 10px;
-        font-size: .7rem;
+        font-size: 0.7rem;
 
         &:nth-child(2) {
             margin-left: 50px;
         }
+    }
+
+    .company-list {
+        max-height: 100%;
+        overflow-y: scroll;
     }
 }

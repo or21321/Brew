@@ -26,8 +26,21 @@ function debounce(fn, delay) {
     }
 }
 
+function loadFromStorage(key: string) {
+    const itemStr = localStorage.getItem(key)
+    if (!itemStr) return
+    return JSON.parse(itemStr)
+}
+
+function saveToStorage<valType>(key: string, val: valType) {
+    localStorage.setItem(key, JSON.stringify(val))
+}
+
+
 export const utilService = {
     makeId,
     getRandomInt,
-    debounce
+    debounce,
+    loadFromStorage,
+    saveToStorage
 }

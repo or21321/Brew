@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { router } from './router'
+import { store, key } from './store';
 import App from './App.vue'
 
 import VueApexCharts from "vue3-apexcharts";
@@ -18,4 +19,4 @@ import { faFileImport, faMagnifyingGlass, faCalendar, faCirclePlus } from '@fort
 /* add icons to the library */
 library.add(faFileImport, faMagnifyingGlass, faCalendar, faCirclePlus)
 
-createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(VueApexCharts).use(router).mount('#app')
+createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(store, key).use(VueApexCharts).use(router).mount('#app')

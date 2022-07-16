@@ -3,8 +3,6 @@
     padding-top: 17px;
 
     .analytics-header {
-
-
         ul {
             display: flex;
             gap: 30px;
@@ -16,8 +14,8 @@
 
                 &.active {
                     color: green;
-                    border-bottom: 1.5px solid green;
-                    margin-bottom: -1.5px;
+                    border-bottom: 2px solid green;
+                    margin-bottom: -2px;
                 }
             }
         }
@@ -36,12 +34,15 @@
 
         & > * {
             border: 1px solid grey;
-            min-width: 350px;
+            // min-width: 50%;
             max-width: 50%;
 
-            @include for-wide-mobile-layout {
+            @media (max-width: 600px) {
                 max-width: unset;
-                min-width: unset;
+                flex-basis: 100%;
+            }
+            @include for-wide-mobile-layout {
+                // min-width: unset;
             }
         }
     }
