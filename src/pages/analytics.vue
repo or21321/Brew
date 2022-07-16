@@ -107,7 +107,7 @@ function setMaxHeight() {
       <company-list :companies="companies"></company-list>
       <div class="chart-container grow">
         <apexchart
-          height="100%"
+          :height="maxHeight"
           type="scatter"
           :options="chartOptions"
           :series="companiesAnalyticsSeries"
