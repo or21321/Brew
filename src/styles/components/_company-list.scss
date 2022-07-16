@@ -3,7 +3,7 @@
     max-height: 100%;
 
     @include for-small-mobile-layout {
-        max-height: 300px;
+        height: 300px;
     }
 
     /* width */

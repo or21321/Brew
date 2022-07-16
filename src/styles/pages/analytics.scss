@@ -45,5 +45,12 @@
                 // min-width: unset;
             }
         }
+
+        .chart-container {
+            max-height: 100%;
+            @include for-small-mobile-layout {
+                height: 300px;
+            }
+        }
     }
 }

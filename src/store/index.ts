@@ -4,25 +4,33 @@ import { CompanyAnalytic } from '../models/companyAnalytic.model'
 import { analyticsService } from '../services/company-analytics.service'
 
 export interface State {
-    companiesAnalytics: null | CompanyAnalytic[]
+    companies: null | CompanyAnalytic[]
 }
 
 export const key: InjectionKey<Store<State>> = Symbol()
 
 export const store = createStore<State>({
     state: {
-        companiesAnalytics: null
+        companies: null
     },
     getters: {
+        companiesForDisplay({ companies }) {
+            // filter logic would be here for store filtering
+            return companies
+        }
 
     },
     mutations: {
-
+        setCompanies(state, { companies }) {
+            state.companies = companies
+            console.log('state.companies', state.companies);
+        }
     },
     actions: {
-        async loadCompaniesAnalytics({ commit: Commit }, { filterBy }) {
+        async loadCompaniesAnalytics({ commit }, { filterBy }) {
             // filterBy would be implemented here if I want to do server side filtering
-            return await analyticsService.loadCompanies(filterBy)
+            const companies = await analyticsService.loadCompanies(filterBy)
+            commit({ type: 'setCompanies', companies })
         }
 
     }

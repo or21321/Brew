@@ -6,6 +6,7 @@ import { utilService } from "./services/util.service";
 import appHeader from "./components/app-header.vue";
 import { watchEffect } from "@vue/runtime-core";
 
+// Dynamic. *Probably for app-header links could just use template - no need for dynamic.
 const headerNavLinks = ref([
   { name: "Home", _id: utilService.makeId() },
   { name: "Analytics", _id: utilService.makeId() },

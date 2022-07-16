@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from "@vue/reactivity";
-import { onMounted, watchEffect } from "@vue/runtime-core";
+import { computed, onMounted, watchEffect } from "@vue/runtime-core";
 import { useRoute, useRouter } from "vue-router";
 import analyticsHeader from "../components/analytics-header.vue";
 import analyticsFilter from "../components/analytics-filter/analytics-filter.vue";
@@ -13,27 +13,31 @@ const route = useRoute();
 const router = useRouter();
 const store = useStore();
 
-const companies = ref<null | CompanyAnalytic[]>(null);
+const companies = computed(() => store.getters.companiesForDisplay);
+
 onMounted(async () => {
-  // store.dispatch({ type: "loadCompaniesAnalytics" });
-  companies.value = await store.dispatch({ type: "loadCompaniesAnalytics" });
-  console.log('companies.value', companies.value);
-  
+  // Should also remove event listener on destroyed life cycle.
+  window.addEventListener("resize", setMaxHeight);
+  await store.dispatch({ type: "loadCompaniesAnalytics" });
+  setMaxHeight();
+});
+// Data for chart:
+const companiesAnalyticsSeries = computed(() => {
+  const x = companies?.value?.map((company: CompanyAnalytic) => ({
+    name: company.name,
+    data: company.data,
+  }));
+  console.log(x);
+  return x;
 });
 
-// **Should be done by store
+// **Should be done by store - dynamic per user
 const analyticsTypes = ref([
   { name: "Market", _id: utilService.makeId() },
   { name: "Competitive", _id: utilService.makeId() },
 ]);
 
-watchEffect(() => {
-  if (route.path === "/analytics" && !Object.keys(route.query).length) {
-    console.log("Hello");
-    router.push(route.path + `?type=${analyticsTypes.value[0].name}`);
-  }
-});
-
+// Dynamic for each analytic type
 const filterSelects = ref([
   {
     _id: utilService.makeId(),
@@ -52,46 +56,42 @@ const filterSelects = ref([
     ],
   },
 ]);
-
-// console.log(companies.value);
+// Go to uses first analytic type, using query strings primarly for user experience.
+watchEffect(() => {
+  if (route.path === "/analytics" && !Object.keys(route.query).length) {
+    console.log("Hello");
+    router.push(route.path + `?type=${analyticsTypes.value[0].name}`);
+  }
+});
 
 let chartOptions = {
   chart: {
     id: "vuechart-example",
   },
   xaxis: {
-    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
   },
 };
-
-let series = [
-  {
-    name: "series-1",
-    data: [30, 40, 35, 50, 49, 60, 70, 91],
-  },
-  {
-    name: "series-2",
-    data: [37, 47, 37, 50, 47, 67, 70, 91],
-  },
-];
-
-const list = ref<null | Element>(null);
+// Responsiveness for analytics-container by screen size:
+const analyticsContainerRef = ref<null | Element>(null);
 
 let maxHeight = ref<null | string>(null);
 
 function setMaxHeight() {
-  if (!list.value) return;
-  let height: number | string =
-    window.innerHeight - list?.value?.getBoundingClientRect().y - 5;
-  console.log(height);
-  height = height + "px";
-  maxHeight.value = height;
-}
+  console.log("analyticsContainerRef.value", analyticsContainerRef.value);
 
-onMounted(() => {
-  setMaxHeight();
-  window.addEventListener("resize", setMaxHeight);
-});
+  if (!analyticsContainerRef.value) return;
+
+  let height: number | string =
+    window.innerHeight -
+    analyticsContainerRef?.value?.getBoundingClientRect().y -
+    5;
+
+  height = height + "px";
+
+  maxHeight.value = height;
+  console.log("maxHeight.value", maxHeight.value);
+}
 </script>
 
 <template>
@@ -101,16 +101,18 @@ onMounted(() => {
     <section
       v-if="companies"
       :style="{ maxHeight }"
-      ref="list"
+      ref="analyticsContainerRef"
       class="analytics-container flex wrap"
     >
       <company-list :companies="companies"></company-list>
-      <apexchart
-        class="grow"
-        type="scatter"
-        :options="chartOptions"
-        :series="series"
-      ></apexchart>
+      <div class="chart-container grow">
+        <apexchart
+          height="100%"
+          type="scatter"
+          :options="chartOptions"
+          :series="companiesAnalyticsSeries"
+        ></apexchart>
+      </div>
     </section>
     <div v-else>Loading...</div>
   </main>
